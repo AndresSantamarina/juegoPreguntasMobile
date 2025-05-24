@@ -57,6 +57,11 @@
       },
       "EXPO_PUBLIC_API_URI": "https://backend-juego-preguntas.vercel.app/api",
       "EXPO_PUBLIC_API_PREGUNTAS": "https://backend-juego-preguntas.vercel.app/api/preguntas"
+    },
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": ["react-native-awesome-alerts", "react-native-vector-icons"]
+      }
     }
   }
 }

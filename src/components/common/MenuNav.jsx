@@ -18,7 +18,7 @@ const MenuNav = () => {
       colors={["#4c669f", "#3b5998", "#192f6a"]}
       style={styles.navbar}
     >
-      <Text style={styles.title}>JUEGO DE PREGUNTAS</Text>
+      <Text style={styles.title}>SUGAR RUSH QUIZ</Text>
       <View style={styles.links}>
         {!user ? (
           <>
@@ -41,7 +41,7 @@ const MenuNav = () => {
 
 const styles = StyleSheet.create({
   navbar: {
-    paddingTop: 40,
+    paddingTop: 50,
     paddingBottom: 16,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   linkBtn: {
-    backgroundColor: "#ffffff33", // blanco con transparencia
+    backgroundColor: "#ffffff33",
     borderRadius: 20,
     paddingVertical: 6,
     paddingHorizontal: 12,

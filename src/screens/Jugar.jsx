@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   Text,
-  Button,
   StyleSheet,
   ScrollView,
   ActivityIndicator,
@@ -24,7 +23,6 @@ const Jugar = () => {
   const navigation = useNavigation();
   const { nivel: nivelParam } = route.params || {};
   const { user } = useAuth();
-
   const [preguntas, setPreguntas] = useState([]);
   const [niveles, setNiveles] = useState([]);
   const [respuestaCorrecta, setRespuestaCorrecta] = useState(null);
@@ -152,7 +150,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     marginVertical: 20,
-    color:"#2c3e50"
+    color: "#2c3e50",
   },
   subtitle: {
     fontSize: 18,

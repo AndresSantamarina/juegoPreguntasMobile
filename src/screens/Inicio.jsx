@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { globalStyles } from "../styles/global";
 import { useAuth } from "../context/AuthContext";
 import MainLayout from "../components/common/MainLayout";
 
@@ -41,7 +40,9 @@ const Inicio = () => {
         <View style={styles.socialContainer}>
           <TouchableOpacity
             onPress={() =>
-              Linking.openURL("https://www.linkedin.com/in/andr%C3%A9s-eduardo-santamarina/")
+              Linking.openURL(
+                "https://www.linkedin.com/in/andr%C3%A9s-eduardo-santamarina/"
+              )
             }
             style={styles.iconWrapper}
           >
@@ -49,7 +50,9 @@ const Inicio = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => Linking.openURL("https://github.com/AndresSantamarina")}
+            onPress={() =>
+              Linking.openURL("https://github.com/AndresSantamarina")
+            }
             style={styles.iconWrapper}
           >
             <FontAwesome name="github" size={36} color="#171515" />
@@ -67,7 +70,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    marginTop: 40,
+    marginTop: 30,
     fontWeight: "bold",
     textAlign: "center",
     color: "#2c3e50",
@@ -101,7 +104,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 40,
     justifyContent: "center",
-    gap: 20, // si tu versión no soporta gap, usá marginHorizontal en los ítems
+    gap: 20,
   },
   iconWrapper: {
     marginHorizontal: 15,

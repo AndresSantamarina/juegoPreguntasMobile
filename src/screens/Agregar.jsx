@@ -1,4 +1,3 @@
-import React from "react";
 import {
   View,
   Text,
@@ -10,12 +9,12 @@ import {
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { Picker } from "@react-native-picker/picker";
-import { crearPreguntaAPI } from "../helpers/queries"; // ajusta si es necesario
+import { crearPreguntaAPI } from "../helpers/queries";
 import { useAuth } from "../context/AuthContext";
 import MainLayout from "../components/common/MainLayout";
 import { showMessage } from "react-native-flash-message";
 
-const buttonColor = "#2c3e50"; // El mismo color oscuro que Login
+const buttonColor = "#2c3e50";
 
 const Agregar = () => {
   const { user } = useAuth();
@@ -46,8 +45,6 @@ const Agregar = () => {
         type: "success",
         icon: "success",
       });
-
-      // Alert.alert("Éxito", "Pregunta creada correctamente");
       reset();
     } catch (error) {
       showMessage({
@@ -64,10 +61,7 @@ const Agregar = () => {
     <MainLayout>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>AGREGAR</Text>
-
         <Text style={styles.subtitle}>Agregar preguntas</Text>
-
-        {/* Nivel Picker */}
         <Text style={styles.label}>Nivel</Text>
         <Controller
           control={control}
@@ -96,8 +90,6 @@ const Agregar = () => {
         {errors.nivel && (
           <Text style={styles.errorText}>{errors.nivel.message}</Text>
         )}
-
-        {/* Pregunta */}
         <Text style={styles.label}>Pregunta</Text>
         <Controller
           control={control}
@@ -125,8 +117,6 @@ const Agregar = () => {
         {errors.pregunta && (
           <Text style={styles.errorText}>{errors.pregunta.message}</Text>
         )}
-
-        {/* Opción 1 */}
         <Text style={styles.label}>Opción 1</Text>
         <Controller
           control={control}
@@ -154,8 +144,6 @@ const Agregar = () => {
         {errors.opcionUno && (
           <Text style={styles.errorText}>{errors.opcionUno.message}</Text>
         )}
-
-        {/* Opción 2 */}
         <Text style={styles.label}>Opción 2</Text>
         <Controller
           control={control}
@@ -183,8 +171,6 @@ const Agregar = () => {
         {errors.opcionDos && (
           <Text style={styles.errorText}>{errors.opcionDos.message}</Text>
         )}
-
-        {/* Opción 3 */}
         <Text style={styles.label}>Opción 3</Text>
         <Controller
           control={control}
@@ -212,8 +198,6 @@ const Agregar = () => {
         {errors.opcionTres && (
           <Text style={styles.errorText}>{errors.opcionTres.message}</Text>
         )}
-
-        {/* Respuesta Correcta */}
         <Text style={styles.label}>Respuesta Correcta</Text>
         <Controller
           control={control}
@@ -241,8 +225,6 @@ const Agregar = () => {
         {errors.opcionCorrecta && (
           <Text style={styles.errorText}>{errors.opcionCorrecta.message}</Text>
         )}
-
-        {/* Botón Agregar */}
         <TouchableOpacity
           style={styles.button}
           onPress={handleSubmit(crearPregunta)}
@@ -286,13 +268,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: "#555",
   },
-  // label: {
-  //   fontSize: 16,
-  //   fontWeight: "600",
-  //   color: "#444",
-  //   marginBottom: 6,
-  //   marginTop: 12,
-  // },
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
@@ -305,9 +280,9 @@ const styles = StyleSheet.create({
   },
   pickerContainer: {
     borderWidth: 1,
-    borderColor: "#007bff", // azul para destacar
+    borderColor: "#007bff",
     borderRadius: 6,
-    backgroundColor: "#f0f8ff", // azul claro
+    backgroundColor: "#f0f8ff",
     marginBottom: 10,
     justifyContent: "center",
     height: 44,

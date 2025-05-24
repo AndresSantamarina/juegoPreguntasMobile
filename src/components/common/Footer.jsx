@@ -1,5 +1,3 @@
-// components/common/Footer.js (React Native)
-import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const Footer = () => {
@@ -19,7 +17,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 8,
     alignItems: "center",
-    marginTop: "auto", // útil si usás Flexbox en toda la pantalla
+    marginTop: "auto",
   },
   text: {
     color: "#fff",

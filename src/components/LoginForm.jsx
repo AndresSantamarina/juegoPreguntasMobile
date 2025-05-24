@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   View,
   TextInput,
   Text,
   StyleSheet,
-  Alert,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../context/AuthContext";
 import MainLayout from "./common/MainLayout";
-import { showMessage } from "react-native-flash-message";
 
-const buttonColor = "#2c3e50"; // El mismo color oscuro que Login
+const buttonColor = "#2c3e50";
 
 const LoginForm = () => {
   const [name, setName] = useState("");
@@ -28,21 +26,7 @@ const LoginForm = () => {
       setError("Nombre y contraseña son requeridos");
       return;
     }
-
     const res = await login({ name, password });
-
-    // if (res.success) {
-    //   Alert.alert("Éxito", "Bienvenido!", [
-    //     { text: "OK", onPress: () => navigation.navigate("Inicio") },
-    //   ]);
-    // } else {
-    //   setError(res.message || "Error desconocido al iniciar sesión");
-    //   console.error("Error de login:", res.message);
-    //   Alert.alert(
-    //     "Error",
-    //     res.message || "Error desconocido al iniciar sesión"
-    //   );
-    // }
   };
 
   return (

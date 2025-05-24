@@ -1,4 +1,3 @@
-import React from "react";
 import {
   View,
   Text,
@@ -38,26 +37,17 @@ const CardPreguntaEditDelete = ({ pregunta, setPreguntas, nivel }) => {
                 type: "success",
                 icon: "success",
               });
-              // Alert.alert(
-              //   "Pregunta eliminada!",
-              //   respuesta.message || "La pregunta fue eliminada correctamente"
-              // );
 
               const preguntasActualizadas =
                 await listarPreguntasPorNivelUsuario(nivel);
               setPreguntas(preguntasActualizadas);
             } catch (error) {
-              
-                      showMessage({
-                    message: "Error",
-                    description: `La pregunta no pudo ser eliminada`,
-                    type: "danger",
-                    icon: "danger",
-                  });
-              // Alert.alert(
-              //   "Ocurrió un error",
-              //   error.message || "La pregunta no pudo ser eliminada"
-              // );
+              showMessage({
+                message: "Error",
+                description: `La pregunta no pudo ser eliminada`,
+                type: "danger",
+                icon: "danger",
+              });
             }
           },
         },
@@ -116,7 +106,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 12,
     padding: 20,
-    // sombra ligera cross-platform
     elevation: 5,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 3 },
@@ -133,8 +122,8 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "center", // Centra horizontalmente las cajas
-    gap: 12, // espacio entre opciones (si tu RN soporta gap)
+    justifyContent: "center",
+    gap: 12,
   },
   optionWrapper: {
     backgroundColor: "#f0f4f8",
@@ -148,15 +137,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 2,
     minWidth: 150,
-
-    // Centrar contenido dentro del contenedor
     alignItems: "center",
     justifyContent: "center",
   },
   optionText: {
     fontSize: 16,
     color: "#34495e",
-    textAlign: "center", // centrado del texto
+    textAlign: "center",
   },
   optionIndex: {
     fontWeight: "700",
@@ -179,10 +166,10 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   editButton: {
-    backgroundColor: "#f39c12", // naranja vibrante
+    backgroundColor: "#f39c12",
   },
   deleteButton: {
-    backgroundColor: "#e74c3c", // rojo vibrante
+    backgroundColor: "#e74c3c",
   },
   buttonText: {
     color: "#fff",

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import {
   View,
   TextInput,
@@ -13,7 +13,7 @@ import { AuthContext } from "../context/AuthContext";
 import MainLayout from "./common/MainLayout";
 import { showMessage } from "react-native-flash-message";
 
-const buttonColor = "#2c3e50"; // El mismo color oscuro que Login
+const buttonColor = "#2c3e50";
 
 const Register = () => {
   const { register } = useContext(AuthContext);
@@ -37,19 +37,15 @@ const Register = () => {
         type: "success",
         icon: "success",
       });
-      // Alert.alert("Éxito", "Usuario creado correctamente", [
-      //   { text: "OK", onPress: () => navigation.navigate("Inicio") },
-      // ]);
     } else {
       setError(res.message);
-      
-              showMessage({
-            message: "Error",
-            description: `No se pudo crear el usuario`,
-            type: "danger",
-            icon: "danger",
-          });
-      // Alert.alert("Error", res.message || "Error al crear el usuario");
+
+      showMessage({
+        message: "Error",
+        description: `No se pudo crear el usuario`,
+        type: "danger",
+        icon: "danger",
+      });
     }
   };
 

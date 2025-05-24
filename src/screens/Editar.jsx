@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import {
   View,
   Text,
@@ -29,7 +29,7 @@ const niveles = [
   { label: "Diez", value: "10" },
 ];
 
-const buttonColor = "#2c3e50"; // El mismo color oscuro que Login
+const buttonColor = "#2c3e50";
 
 const Editar = () => {
   const {
@@ -74,12 +74,7 @@ const Editar = () => {
           type: "success",
           icon: "success",
         });
-        navigation.navigate("Preguntas")
-        // Alert.alert(
-        //   "Pregunta editada",
-        //   "La pregunta fue editada correctamente",
-        //   [{ text: "OK", onPress: () => navigation.navigate("Preguntas") }]
-        // );
+        navigation.navigate("Preguntas");
         reset();
       } else {
         showMessage({
@@ -88,7 +83,6 @@ const Editar = () => {
           type: "danger",
           icon: "danger",
         });
-        // Alert.alert("Error", "La pregunta no pudo ser editada");
       }
     } catch (error) {
       showMessage({
@@ -161,8 +155,6 @@ const Editar = () => {
         {errors.pregunta && (
           <Text style={styles.errorText}>{errors.pregunta.message}</Text>
         )}
-
-        {/* Opciones 1, 2, 3 y Opción Correcta */}
         {["opcionUno", "opcionDos", "opcionTres", "opcionCorrecta"].map(
           (campo, i) => (
             <View key={campo}>
@@ -205,14 +197,6 @@ const Editar = () => {
             </View>
           )
         )}
-
-        {/* <View style={styles.buttonContainer}>
-        <Button
-          title="Guardar"
-          onPress={handleSubmit(editarPregunta)}
-          color="#333"
-        />
-      </View> */}
         <TouchableOpacity
           style={styles.button}
           onPress={handleSubmit(editarPregunta)}
@@ -245,13 +229,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: "#555",
   },
-  // label: {
-  //   fontSize: 16,
-  //   fontWeight: "600",
-  //   color: "#444",
-  //   marginBottom: 6,
-  //   marginTop: 12,
-  // },
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
@@ -264,9 +241,9 @@ const styles = StyleSheet.create({
   },
   pickerContainer: {
     borderWidth: 1,
-    borderColor: "#007bff", // azul para destacar
+    borderColor: "#007bff",
     borderRadius: 6,
-    backgroundColor: "#f0f8ff", // azul claro
+    backgroundColor: "#f0f8ff",
     marginBottom: 10,
     justifyContent: "center",
     height: 44,

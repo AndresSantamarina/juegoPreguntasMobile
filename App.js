@@ -1,4 +1,3 @@
-// App.jsx
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthProvider, useAuth } from './src/context/AuthContext';
@@ -47,7 +46,7 @@ function MainNavigator() {
 export default function App() {
   return (
     <AuthProvider>
-        <FlashMessage position="top" />
+      <FlashMessage position="top" />
       <NavigationContainer>
         <MainNavigator />
       </NavigationContainer>

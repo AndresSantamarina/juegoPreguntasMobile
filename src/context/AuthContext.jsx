@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
-import { Alert } from "react-native";
 import { showMessage } from "react-native-flash-message";
 
 const URL_API = process.env.EXPO_PUBLIC_API_URI;
@@ -14,7 +13,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Cargar usuario guardado al iniciar la app
   useEffect(() => {
     const loadUserFromStorage = async () => {
       try {
@@ -50,28 +48,26 @@ export const AuthProvider = ({ children }) => {
       await AsyncStorage.setItem("user", JSON.stringify(userData));
       await AsyncStorage.setItem("token", res.data.token);
 
-        showMessage({
-      message: "Bienvenido",
-      description: `Hola, ${res.data.user.name}`,
-      type: "success",
-      icon: "success",
-    });
-
-     
+      showMessage({
+        message: "Bienvenido",
+        description: `Hola, ${res.data.user.name}`,
+        type: "success",
+        icon: "success",
+      });
 
       return { success: true };
     } catch (error) {
       console.error("Error en login:", error);
 
-        showMessage({
-      message: "Error al iniciar sesión",
-      description:
-        error.response?.data?.message ||
-        error.message ||
-        "Ocurrió un error inesperado",
-      type: "danger",
-      icon: "danger",
-    });
+      showMessage({
+        message: "Error al iniciar sesión",
+        description:
+          error.response?.data?.message ||
+          error.message ||
+          "Ocurrió un error inesperado",
+        type: "danger",
+        icon: "danger",
+      });
       return {
         success: false,
         message:
@@ -102,13 +98,12 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     await AsyncStorage.clear();
     showMessage({
-    message: "Sesión cerrada",
-    description: "Has cerrado sesión correctamente",
-    type: "success",
-    icon: "success",
-    duration: 3000,
-  });
-    
+      message: "Sesión cerrada",
+      description: "Has cerrado sesión correctamente",
+      type: "success",
+      icon: "success",
+      duration: 3000,
+    });
   };
 
   return (

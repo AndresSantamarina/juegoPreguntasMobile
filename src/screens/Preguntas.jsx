@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginVertical: 20,
     textAlign: "center",
-    color:"#2c3e50"
+    color: "#2c3e50",
   },
   subtitle: {
     fontSize: 16,

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-const URL_Preguntas = process.env.EXPO_PUBLIC_API_PREGUNTAS; // si usás Expo
+const URL_Preguntas = process.env.EXPO_PUBLIC_API_PREGUNTAS;
 
 const getAuthHeaders = async () => {
   const token = await AsyncStorage.getItem('token');
@@ -100,7 +100,7 @@ export const eliminarPreguntaAPI = async (id) => {
       try {
         const errorData = await respuesta.json();
         errorMsg = errorData.message || errorMsg;
-      } catch {}
+      } catch { }
       throw new Error(errorMsg);
     }
 

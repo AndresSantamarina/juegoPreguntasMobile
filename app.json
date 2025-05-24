@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "preguntasMobile",
+    "name": "Sugar Rush Quiz",
     "slug": "preguntasMobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.Andres912.sugarrushquiz"
     },
     "web": {
       "bundler": "metro",
@@ -43,6 +44,13 @@
       "image": "./src/assets/splash-screen-dark.png",
       "resizeMode": "contain",
       "backgroundColor": "#192f6a"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "92d19259-6849-450b-b7c2-da613969e198"
+      }
+
     }
   }
 }

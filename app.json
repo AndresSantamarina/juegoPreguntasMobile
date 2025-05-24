@@ -36,7 +36,7 @@
         {
           "image": "./src/assets/splash-screen-dark.png",
           "imageWidth": 200,
-          "resizeMode": "contain",
+          "resizeMode": "cover",
           "backgroundColor": "#192f6a"
         }
       ],
@@ -47,7 +47,7 @@
     },
     "splash": {
       "image": "./src/assets/splash-screen-dark.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#192f6a"
     },
     "extra": {

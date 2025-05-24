@@ -3,7 +3,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { showMessage } from "react-native-flash-message";
 
-const URL_API = process.env.EXPO_PUBLIC_API_URI;
+// const URL_API = process.env.EXPO_PUBLIC_API_URI;
+const URL_API = "https://backend-juego-preguntas.vercel.app/api"
 
 export const AuthContext = createContext();
 

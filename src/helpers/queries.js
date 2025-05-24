@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-const URL_Preguntas = process.env.EXPO_PUBLIC_API_PREGUNTAS;
+const URL_Preguntas = "https://backend-juego-preguntas.vercel.app/api/preguntas"
 
 const getAuthHeaders = async () => {
   const token = await AsyncStorage.getItem('token');

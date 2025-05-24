@@ -49,8 +49,9 @@
       "router": {},
       "eas": {
         "projectId": "92d19259-6849-450b-b7c2-da613969e198"
-      }
-
+      },
+      "EXPO_PUBLIC_API_URI": "https://backend-juego-preguntas.vercel.app/api",
+      "EXPO_PUBLIC_API_PREGUNTAS": "https://backend-juego-preguntas.vercel.app/api/preguntas"
     }
   }
 }

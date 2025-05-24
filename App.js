@@ -10,7 +10,10 @@ import Error404 from './src/screens/Error404';
 import LoginForm from './src/components/LoginForm';
 import Register from './src/components/Register';
 import FlashMessage from 'react-native-flash-message';
+import { useEffect, useCallback, useState } from "react";
+import * as SplashScreen from "expo-splash-screen";
 
+SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
 
 function AuthStack() {
@@ -44,10 +47,32 @@ function MainNavigator() {
 }
 
 export default function App() {
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    const prepare = async () => {
+      // Simulá una carga inicial (ej: datos, fuentes, etc.)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setAppIsReady(true);
+    };
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      // Ocultá la splash screen
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) {
+    return null; // aún no mostrar la app
+  }
+
   return (
     <AuthProvider>
       <FlashMessage position="top" />
-      <NavigationContainer>
+       <NavigationContainer onReady={onLayoutRootView}>
         <MainNavigator />
       </NavigationContainer>
     </AuthProvider>

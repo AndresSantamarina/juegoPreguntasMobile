@@ -20,6 +20,7 @@
         "foregroundImage": "./src/assets/icon-question.png",
         "backgroundColor": "#ffffff"
       },
+      "jsEngine": "hermes",
       "edgeToEdgeEnabled": true,
       "package": "com.Andres912.sugarrushquiz"
     },

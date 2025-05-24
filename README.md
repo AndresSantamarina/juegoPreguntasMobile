@@ -1,50 +1,67 @@
-# Welcome to your Expo app 👋
+# 🎮 Sugar Rush Quiz
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Sugar Rush Quiz** es una aplicación de preguntas y respuestas creada con **React Native** y **Expo**, orientada a ofrecer una experiencia divertida y didáctica. Permite a los usuarios registrarse, agregar preguntas personalizadas, jugar con cuestionarios y modificar el contenido según sus preferencias.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Características principales
 
-   ```bash
-   npm install
-   ```
+- Registro e inicio de sesión de usuarios.
+- Agregar, editar y eliminar preguntas.
+- Jugar quizzes de forma interactiva.
+- Navegación fluida con React Navigation.
+- Interfaz visual atractiva con Gradientes y Flash Messages.
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 📱 Tecnologías y librerías utilizadas
 
-In the output, you'll find options to open the app in a
+- **React Native** (Expo)
+- **React Navigation** (`@react-navigation/native`, `@react-navigation/native-stack`)
+- **Expo Router**
+- **React Context API** (manejo de autenticación)
+- **Axios** (peticiones HTTP)
+- **react-native-flash-message** (notificaciones)
+- **expo-linear-gradient** (estética de gradientes)
+- **expo-font** (tipografías personalizadas)
+- **expo-splash-screen**
+- **AsyncStorage** (almacenamiento local)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🛠️ Instalación y ejecución local
 
-## Get a fresh project
+1. **Cloná el repositorio**
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
+    ```bash
+    git clone https://github.com/AndresSantamarina/sugar-rush-quiz.git
+    cd sugar-rush-quiz
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. **Instalá las dependencias**
 
-## Learn more
+    ```bash
+    npm install
+    # o
+    yarn install
 
-To learn more about developing your project with Expo, look at the following resources:
+3. **Iniciá el proyecto con Expo**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+    ```bash
+    npx expo start
 
-## Join the community
+4. **Escaneá el QR con Expo Go desde tu celular, o correlo en un emulador Android/iOS.**
 
-Join our community of developers creating universal apps.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## 👨‍💻 Autor
+Andrés Eduardo Santamarina
+
+- Frontend y Full Stack Developer
+- [Github](https://github.com/AndresSantamarina)
+- [Linkedin](https://www.linkedin.com/in/andr%C3%A9s-eduardo-santamarina/)
+
+## ⚖️ Licencia
+Este proyecto está protegido por derechos de autor.
+
+© 2025 Andrés Eduardo Santamarina. Todos los derechos reservados.

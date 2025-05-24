@@ -7,6 +7,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { Picker } from "@react-native-picker/picker";
@@ -98,112 +100,121 @@ const Editar = () => {
 
   return (
     <MainLayout>
-      <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>EDITAR</Text>
-        <Text style={styles.subtitle}>Editar la pregunta</Text>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={80}
+      >
+        <ScrollView contentContainerStyle={styles.container}>
+          <Text style={styles.title}>EDITAR</Text>
+          <Text style={styles.subtitle}>Editar la pregunta</Text>
 
-        <Text style={styles.label}>Nivel</Text>
-        <Controller
-          control={control}
-          name="nivel"
-          rules={{ required: "Seleccione un nivel" }}
-          render={({ field: { onChange, value } }) => (
-            <View style={styles.pickerContainer}>
-              <Picker
-                selectedValue={value}
-                onValueChange={(itemValue) => onChange(itemValue)}
-                style={styles.picker}
-                dropdownIconColor="#007bff"
-              >
-                {niveles.map((nivel) => (
-                  <Picker.Item
-                    key={nivel.value}
-                    label={nivel.label}
-                    value={nivel.value}
-                  />
-                ))}
-              </Picker>
-            </View>
+          <Text style={styles.label}>Nivel</Text>
+          <Controller
+            control={control}
+            name="nivel"
+            rules={{ required: "Seleccione un nivel" }}
+            render={({ field: { onChange, value } }) => (
+              <View style={styles.pickerContainer}>
+                <Picker
+                  selectedValue={value}
+                  onValueChange={(itemValue) => onChange(itemValue)}
+                  style={styles.picker}
+                  dropdownIconColor="#007bff"
+                >
+                  {niveles.map((nivel) => (
+                    <Picker.Item
+                      key={nivel.value}
+                      label={nivel.label}
+                      value={nivel.value}
+                    />
+                  ))}
+                </Picker>
+              </View>
+            )}
+          />
+          {errors.nivel && (
+            <Text style={styles.errorText}>{errors.nivel.message}</Text>
           )}
-        />
-        {errors.nivel && (
-          <Text style={styles.errorText}>{errors.nivel.message}</Text>
-        )}
 
-        <Text style={styles.label}>Pregunta</Text>
-        <Controller
-          control={control}
-          name="pregunta"
-          rules={{
-            required: "La pregunta es obligatoria",
-            minLength: { value: 5, message: "Debe tener mínimo 5 caracteres" },
-            maxLength: {
-              value: 150,
-              message: "Debe tener máximo 150 caracteres",
-            },
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={styles.input}
-              placeholder="Ingrese una pregunta"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-            />
-          )}
-        />
-        {errors.pregunta && (
-          <Text style={styles.errorText}>{errors.pregunta.message}</Text>
-        )}
-        {["opcionUno", "opcionDos", "opcionTres", "opcionCorrecta"].map(
-          (campo, i) => (
-            <View key={campo}>
-              <Text style={styles.label}>
-                {campo === "opcionCorrecta"
-                  ? "Opción Correcta"
-                  : `Opción ${i + 1}`}
-              </Text>
-              <Controller
-                control={control}
-                name={campo}
-                rules={{
-                  required: "La opción es obligatoria",
-                  minLength: {
-                    value: 1,
-                    message: "Debe tener mínimo 1 caracter",
-                  },
-                  maxLength: {
-                    value: 100,
-                    message: "Debe tener máximo 100 caracteres",
-                  },
-                }}
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    style={styles.input}
-                    placeholder={
-                      campo === "opcionCorrecta"
-                        ? "Opción correcta"
-                        : `Opción ${i + 1}`
-                    }
-                    onBlur={onBlur}
-                    onChangeText={onChange}
-                    value={value}
-                  />
-                )}
+          <Text style={styles.label}>Pregunta</Text>
+          <Controller
+            control={control}
+            name="pregunta"
+            rules={{
+              required: "La pregunta es obligatoria",
+              minLength: {
+                value: 5,
+                message: "Debe tener mínimo 5 caracteres",
+              },
+              maxLength: {
+                value: 150,
+                message: "Debe tener máximo 150 caracteres",
+              },
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                style={styles.input}
+                placeholder="Ingrese una pregunta"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
               />
-              {errors[campo] && (
-                <Text style={styles.errorText}>{errors[campo]?.message}</Text>
-              )}
-            </View>
-          )
-        )}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleSubmit(editarPregunta)}
-        >
-          <Text style={styles.buttonText}>Guardar</Text>
-        </TouchableOpacity>
-      </ScrollView>
+            )}
+          />
+          {errors.pregunta && (
+            <Text style={styles.errorText}>{errors.pregunta.message}</Text>
+          )}
+          {["opcionUno", "opcionDos", "opcionTres", "opcionCorrecta"].map(
+            (campo, i) => (
+              <View key={campo}>
+                <Text style={styles.label}>
+                  {campo === "opcionCorrecta"
+                    ? "Opción Correcta"
+                    : `Opción ${i + 1}`}
+                </Text>
+                <Controller
+                  control={control}
+                  name={campo}
+                  rules={{
+                    required: "La opción es obligatoria",
+                    minLength: {
+                      value: 1,
+                      message: "Debe tener mínimo 1 caracter",
+                    },
+                    maxLength: {
+                      value: 100,
+                      message: "Debe tener máximo 100 caracteres",
+                    },
+                  }}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                      style={styles.input}
+                      placeholder={
+                        campo === "opcionCorrecta"
+                          ? "Opción correcta"
+                          : `Opción ${i + 1}`
+                      }
+                      onBlur={onBlur}
+                      onChangeText={onChange}
+                      value={value}
+                    />
+                  )}
+                />
+                {errors[campo] && (
+                  <Text style={styles.errorText}>{errors[campo]?.message}</Text>
+                )}
+              </View>
+            )
+          )}
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleSubmit(editarPregunta)}
+          >
+            <Text style={styles.buttonText}>Guardar</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </MainLayout>
   );
 };

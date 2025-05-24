@@ -6,6 +6,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
+  KeyboardAvoidingView,
+  Platform
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { Picker } from "@react-native-picker/picker";
@@ -59,179 +61,187 @@ const Agregar = () => {
 
   return (
     <MainLayout>
-      <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>AGREGAR</Text>
-        <Text style={styles.subtitle}>Agregar preguntas</Text>
-        <Text style={styles.label}>Nivel</Text>
-        <Controller
-          control={control}
-          rules={{ required: "Seleccione un nivel" }}
-          name="nivel"
-          render={({ field: { onChange, value } }) => (
-            <View style={styles.pickerContainer}>
-              <Picker
-                selectedValue={value}
-                onValueChange={onChange}
-                style={styles.picker}
-                dropdownIconColor="#007bff"
-              >
-                <Picker.Item label="" value="" />
-                {[...Array(10)].map((_, i) => (
-                  <Picker.Item
-                    key={i + 1}
-                    label={`${i + 1}`}
-                    value={`${i + 1}`}
-                  />
-                ))}
-              </Picker>
-            </View>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={80}
+      >
+        <ScrollView contentContainerStyle={styles.container}>
+          <Text style={styles.title}>AGREGAR</Text>
+          <Text style={styles.subtitle}>Agregar preguntas</Text>
+          <Text style={styles.label}>Nivel</Text>
+          <Controller
+            control={control}
+            rules={{ required: "Seleccione un nivel" }}
+            name="nivel"
+            render={({ field: { onChange, value } }) => (
+              <View style={styles.pickerContainer}>
+                <Picker
+                  selectedValue={value}
+                  onValueChange={onChange}
+                  style={styles.picker}
+                  dropdownIconColor="#007bff"
+                >
+                  <Picker.Item label="" value="" />
+                  {[...Array(10)].map((_, i) => (
+                    <Picker.Item
+                      key={i + 1}
+                      label={`${i + 1}`}
+                      value={`${i + 1}`}
+                    />
+                  ))}
+                </Picker>
+              </View>
+            )}
+          />
+          {errors.nivel && (
+            <Text style={styles.errorText}>{errors.nivel.message}</Text>
           )}
-        />
-        {errors.nivel && (
-          <Text style={styles.errorText}>{errors.nivel.message}</Text>
-        )}
-        <Text style={styles.label}>Pregunta</Text>
-        <Controller
-          control={control}
-          rules={{
-            required: "La pregunta es obligatoria",
-            minLength: {
-              value: 5,
-              message: "La pregunta debe tener como mínimo 5 caracteres",
-            },
-            maxLength: {
-              value: 150,
-              message: "La pregunta debe tener como máximo 150 caracteres",
-            },
-          }}
-          name="pregunta"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              placeholder="Ingrese una pregunta"
-              onChangeText={onChange}
-              value={value}
-            />
+          <Text style={styles.label}>Pregunta</Text>
+          <Controller
+            control={control}
+            rules={{
+              required: "La pregunta es obligatoria",
+              minLength: {
+                value: 5,
+                message: "La pregunta debe tener como mínimo 5 caracteres",
+              },
+              maxLength: {
+                value: 150,
+                message: "La pregunta debe tener como máximo 150 caracteres",
+              },
+            }}
+            name="pregunta"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                placeholder="Ingrese una pregunta"
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+          />
+          {errors.pregunta && (
+            <Text style={styles.errorText}>{errors.pregunta.message}</Text>
           )}
-        />
-        {errors.pregunta && (
-          <Text style={styles.errorText}>{errors.pregunta.message}</Text>
-        )}
-        <Text style={styles.label}>Opción 1</Text>
-        <Controller
-          control={control}
-          rules={{
-            required: "La opción es obligatoria",
-            minLength: {
-              value: 1,
-              message: "La opción debe tener como mínimo 1 caracter",
-            },
-            maxLength: {
-              value: 100,
-              message: "La opción debe tener como máximo 100 caracteres",
-            },
-          }}
-          name="opcionUno"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              placeholder="Opción uno"
-              onChangeText={onChange}
-              value={value}
-            />
+          <Text style={styles.label}>Opción 1</Text>
+          <Controller
+            control={control}
+            rules={{
+              required: "La opción es obligatoria",
+              minLength: {
+                value: 1,
+                message: "La opción debe tener como mínimo 1 caracter",
+              },
+              maxLength: {
+                value: 100,
+                message: "La opción debe tener como máximo 100 caracteres",
+              },
+            }}
+            name="opcionUno"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                placeholder="Opción uno"
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+          />
+          {errors.opcionUno && (
+            <Text style={styles.errorText}>{errors.opcionUno.message}</Text>
           )}
-        />
-        {errors.opcionUno && (
-          <Text style={styles.errorText}>{errors.opcionUno.message}</Text>
-        )}
-        <Text style={styles.label}>Opción 2</Text>
-        <Controller
-          control={control}
-          rules={{
-            required: "La opción es obligatoria",
-            minLength: {
-              value: 1,
-              message: "La opción debe tener como mínimo 1 caracter",
-            },
-            maxLength: {
-              value: 100,
-              message: "La opción debe tener como máximo 100 caracteres",
-            },
-          }}
-          name="opcionDos"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              placeholder="Opción dos"
-              onChangeText={onChange}
-              value={value}
-            />
+          <Text style={styles.label}>Opción 2</Text>
+          <Controller
+            control={control}
+            rules={{
+              required: "La opción es obligatoria",
+              minLength: {
+                value: 1,
+                message: "La opción debe tener como mínimo 1 caracter",
+              },
+              maxLength: {
+                value: 100,
+                message: "La opción debe tener como máximo 100 caracteres",
+              },
+            }}
+            name="opcionDos"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                placeholder="Opción dos"
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+          />
+          {errors.opcionDos && (
+            <Text style={styles.errorText}>{errors.opcionDos.message}</Text>
           )}
-        />
-        {errors.opcionDos && (
-          <Text style={styles.errorText}>{errors.opcionDos.message}</Text>
-        )}
-        <Text style={styles.label}>Opción 3</Text>
-        <Controller
-          control={control}
-          rules={{
-            required: "La opción es obligatoria",
-            minLength: {
-              value: 1,
-              message: "La opción debe tener como mínimo 1 caracter",
-            },
-            maxLength: {
-              value: 100,
-              message: "La opción debe tener como máximo 100 caracteres",
-            },
-          }}
-          name="opcionTres"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              placeholder="Opción tres"
-              onChangeText={onChange}
-              value={value}
-            />
+          <Text style={styles.label}>Opción 3</Text>
+          <Controller
+            control={control}
+            rules={{
+              required: "La opción es obligatoria",
+              minLength: {
+                value: 1,
+                message: "La opción debe tener como mínimo 1 caracter",
+              },
+              maxLength: {
+                value: 100,
+                message: "La opción debe tener como máximo 100 caracteres",
+              },
+            }}
+            name="opcionTres"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                placeholder="Opción tres"
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+          />
+          {errors.opcionTres && (
+            <Text style={styles.errorText}>{errors.opcionTres.message}</Text>
           )}
-        />
-        {errors.opcionTres && (
-          <Text style={styles.errorText}>{errors.opcionTres.message}</Text>
-        )}
-        <Text style={styles.label}>Respuesta Correcta</Text>
-        <Controller
-          control={control}
-          rules={{
-            required: "La opción es obligatoria",
-            minLength: {
-              value: 1,
-              message: "La opción debe tener como mínimo 1 caracter",
-            },
-            maxLength: {
-              value: 100,
-              message: "La opción debe tener como máximo 100 caracteres",
-            },
-          }}
-          name="opcionCorrecta"
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              style={styles.input}
-              placeholder="Respuesta correcta"
-              onChangeText={onChange}
-              value={value}
-            />
+          <Text style={styles.label}>Respuesta Correcta</Text>
+          <Controller
+            control={control}
+            rules={{
+              required: "La opción es obligatoria",
+              minLength: {
+                value: 1,
+                message: "La opción debe tener como mínimo 1 caracter",
+              },
+              maxLength: {
+                value: 100,
+                message: "La opción debe tener como máximo 100 caracteres",
+              },
+            }}
+            name="opcionCorrecta"
+            render={({ field: { onChange, value } }) => (
+              <TextInput
+                style={styles.input}
+                placeholder="Respuesta correcta"
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+          />
+          {errors.opcionCorrecta && (
+            <Text style={styles.errorText}>
+              {errors.opcionCorrecta.message}
+            </Text>
           )}
-        />
-        {errors.opcionCorrecta && (
-          <Text style={styles.errorText}>{errors.opcionCorrecta.message}</Text>
-        )}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleSubmit(crearPregunta)}
-        >
-          <Text style={styles.buttonText}>Agregar</Text>
-        </TouchableOpacity>
-      </ScrollView>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleSubmit(crearPregunta)}
+          >
+            <Text style={styles.buttonText}>Agregar</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </MainLayout>
   );
 };

@@ -18,7 +18,9 @@ const MenuNav = () => {
       colors={["#4c669f", "#3b5998", "#192f6a"]}
       style={styles.navbar}
     >
-      <Text style={styles.title}>SUGAR RUSH QUIZ</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Inicio")}>
+        <Text style={styles.title}>SUGAR RUSH QUIZ</Text>
+      </TouchableOpacity>
       <View style={styles.links}>
         {!user ? (
           <>

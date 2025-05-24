@@ -4,9 +4,9 @@ import {
   TextInput,
   Text,
   StyleSheet,
-  Alert,
   ScrollView,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../context/AuthContext";
@@ -51,36 +51,38 @@ const Register = () => {
 
   return (
     <MainLayout>
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.title}>Registrarse</Text>
+      <KeyboardAvoidingView>
+        <ScrollView contentContainerStyle={styles.container}>
+          <View style={styles.card}>
+            <Text style={styles.title}>Registrarse</Text>
 
-          {error ? <Text style={styles.errorText}>{error}</Text> : null}
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
-          <Text style={styles.label}>Nombre</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Juan Pérez"
-            value={formData.name}
-            onChangeText={(text) => handleChange("name", text)}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
+            <Text style={styles.label}>Nombre</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Juan Pérez"
+              value={formData.name}
+              onChangeText={(text) => handleChange("name", text)}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
 
-          <Text style={styles.label}>Contraseña</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="*******"
-            value={formData.password}
-            onChangeText={(text) => handleChange("password", text)}
-            secureTextEntry
-          />
+            <Text style={styles.label}>Contraseña</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="*******"
+              value={formData.password}
+              onChangeText={(text) => handleChange("password", text)}
+              secureTextEntry
+            />
 
-          <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-            <Text style={styles.buttonText}>Crear cuenta</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+              <Text style={styles.buttonText}>Crear cuenta</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </MainLayout>
   );
 };
